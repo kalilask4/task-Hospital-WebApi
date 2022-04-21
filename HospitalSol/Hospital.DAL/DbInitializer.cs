@@ -20,6 +20,27 @@ public class DbInitializer
                 context.Add(patient);
                 context.SaveChanges();
             }
+            
+            if (!context.Doctors.Any())
+            {
+                var doctor = new DoctorEntity
+                {
+                    FullName = "First Doctor",
+                    Office = new OfficeEntity(),
+                    Specialization = new SpecializationEntity(),
+                    Area = new AreaEntity()
+                };
+                context.Add(doctor);
+                var doctor2 = new DoctorEntity
+                {
+                    FullName = "Second Doctor",
+                    Office = new OfficeEntity(),
+                    SpecializationId = 1,
+                    AreaId = 1
+                };
+                context.Add(doctor2);
+                context.SaveChanges();
+            }
         }
         catch (DbUpdateException e)
         {

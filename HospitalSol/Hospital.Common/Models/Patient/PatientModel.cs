@@ -1,4 +1,6 @@
-namespace Hospital.Common.Models;
+using Hospital.Common.Models.Area;
+
+namespace Hospital.Common.Models.Patient;
 
 public class PatientModel
 {

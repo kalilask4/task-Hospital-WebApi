@@ -1,4 +1,5 @@
 using Hospital.Common.Models;
+using Hospital.Common.Models.Area;
 using Refit;
 
 namespace Hospital.API.Abstraction;

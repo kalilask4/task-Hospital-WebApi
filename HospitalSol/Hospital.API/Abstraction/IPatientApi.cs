@@ -1,5 +1,6 @@
 using Hospital.Abstraction.Entities;
 using Hospital.Common.Models;
+using Hospital.Common.Models.Patient;
 using Refit;
 
 
