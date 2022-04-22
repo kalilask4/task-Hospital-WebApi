@@ -4,7 +4,7 @@ using Hospital.Common.Models;
 using Hospital.Common.Models.Collection;
 using Hospital.Common.Models.Patient;
 
-namespace Hospital.Abstraction.RepositoriesInterfaces;
+namespace Hospital.Abstraction.Interfaces;
 
 public interface IPatientRepository
 {

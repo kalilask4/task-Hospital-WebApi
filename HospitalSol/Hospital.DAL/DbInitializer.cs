@@ -6,7 +6,7 @@ namespace Hospital.DAL;
 
 public class DbInitializer
 {
-    public static void Seed(ApplicationDbContext context)//, ILogger logger)
+    public static void Seed(ApplicationDbContext context, ILogger logger)
     {
         try
         {
@@ -18,16 +18,31 @@ public class DbInitializer
                     Area = new AreaEntity()
                 };
                 context.Add(patient);
+                var patient2 = new PatientEntity
+                {
+                    FamilyName = "Kotova",
+                    Name = "Mary",
+                    Surname = "St",
+                    FullName = "Kotova Mary St",
+                    Address = "ul Novaja",
+                    Birthdate = DateTime.Today,
+                    Area = new AreaEntity
+                    {
+                        Number = "123e"
+                    },
+                    PatientGender = PatientEntity.Gender.Woman
+                };
+                context.Add(patient2);
                 context.SaveChanges();
             }
-            
+
             if (!context.Doctors.Any())
             {
                 var doctor = new DoctorEntity
                 {
                     FullName = "First Doctor",
                     Office = new OfficeEntity(),
-                    Specialization = new SpecializationEntity(),
+                    Specializations = new List<SpecializationEntity>(),
                     Area = new AreaEntity()
                 };
                 context.Add(doctor);
@@ -35,16 +50,18 @@ public class DbInitializer
                 {
                     FullName = "Second Doctor",
                     Office = new OfficeEntity(),
-                    SpecializationId = 1,
+                    Specializations = new List<SpecializationEntity>(),
                     AreaId = 1
                 };
+                doctor2.Specializations.Add(new SpecializationEntity());
+                doctor2.Specializations.Add(new SpecializationEntity());
                 context.Add(doctor2);
                 context.SaveChanges();
             }
         }
         catch (DbUpdateException e)
         {
-            //logger.LogError(e, "Невозможно выполнить первоначальную инициализацию данных");
+            logger.LogError(e, "Невозможно выполнить первоначальную инициализацию данных");
             throw;
         }
     }

@@ -1,9 +1,19 @@
+using Hospital.API;
 using Hospital.DAL;
+using Mapster;
+using MapsterMapper;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+var config = new TypeAdapterConfig();
+
+builder.Services.AddSingleton(config);
+builder.Services.AddSingleton<IMapper, ServiceMapper>();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -28,6 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseRouting();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseHttpsRedirection();
@@ -40,9 +51,9 @@ using (var serviceScope = app.Services.CreateScope())
     {
         var services = serviceScope.ServiceProvider;
         var context = services.GetRequiredService<ApplicationDbContext>();
-        //var logger = services.GetRequiredService<Logger<Program>>();
+        var logger = services.GetRequiredService<ILogger<Program>>();
         context.Database.Migrate();
-        DbInitializer.Seed(context);//, logger);
+        DbInitializer.Seed(context, logger);
     }
     catch (Exception e)
     {

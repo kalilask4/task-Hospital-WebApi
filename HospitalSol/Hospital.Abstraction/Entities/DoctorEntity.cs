@@ -3,7 +3,22 @@ namespace Hospital.Abstraction.Entities;
 public class DoctorEntity: BaseEntity
 {
     /// <summary>
-    /// ФИО врача
+    /// Фамилия врача
+    /// </summary>
+    public string? FamilyName { get; set; }
+
+    /// <summary>
+    /// Имя врача
+    /// </summary>
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Отчество врача
+    /// </summary>
+    public string? Surname { get; set; }
+    
+    /// <summary>
+    /// Полное ФИО врача
     /// </summary>
     public string? FullName { get; set; }
     
@@ -14,10 +29,9 @@ public class DoctorEntity: BaseEntity
     public OfficeEntity? Office { get; set; }
     
     /// <summary>
-    /// Специализация врача
+    /// Специализации врача
     /// </summary>
-    public long? SpecializationId { get; set; }
-    public SpecializationEntity? Specialization { get; set; }
+    public List<SpecializationEntity> Specializations { get; set; } = new();
     
     /// <summary>
     /// Участок врача (для участковых врачей)

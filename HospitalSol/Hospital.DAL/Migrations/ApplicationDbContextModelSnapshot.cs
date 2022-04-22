@@ -22,6 +22,21 @@ namespace Hospital.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("DoctorEntitySpecializationEntity", b =>
+                {
+                    b.Property<long>("DoctorsId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("SpecializationsId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("DoctorsId", "SpecializationsId");
+
+                    b.HasIndex("SpecializationsId");
+
+                    b.ToTable("DoctorEntitySpecializationEntity");
+                });
+
             modelBuilder.Entity("Hospital.Abstraction.Entities.AreaEntity", b =>
                 {
                     b.Property<long>("Id")
@@ -49,22 +64,26 @@ namespace Hospital.DAL.Migrations
                     b.Property<long?>("AreaId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("FamilyName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("OfficeId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("SpecializationId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AreaId");
 
                     b.HasIndex("OfficeId");
-
-                    b.HasIndex("SpecializationId");
 
                     b.ToTable("Doctors");
                 });
@@ -105,11 +124,14 @@ namespace Hospital.DAL.Migrations
                     b.Property<string>("FamilyName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PatientGender")
+                        .HasColumnType("int");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
@@ -129,12 +151,27 @@ namespace Hospital.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<string>("Tittle")
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Specializations");
+                });
+
+            modelBuilder.Entity("DoctorEntitySpecializationEntity", b =>
+                {
+                    b.HasOne("Hospital.Abstraction.Entities.DoctorEntity", null)
+                        .WithMany()
+                        .HasForeignKey("DoctorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Hospital.Abstraction.Entities.SpecializationEntity", null)
+                        .WithMany()
+                        .HasForeignKey("SpecializationsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Hospital.Abstraction.Entities.DoctorEntity", b =>
@@ -147,15 +184,9 @@ namespace Hospital.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("OfficeId");
 
-                    b.HasOne("Hospital.Abstraction.Entities.SpecializationEntity", "Specialization")
-                        .WithMany("Doctors")
-                        .HasForeignKey("SpecializationId");
-
                     b.Navigation("Area");
 
                     b.Navigation("Office");
-
-                    b.Navigation("Specialization");
                 });
 
             modelBuilder.Entity("Hospital.Abstraction.Entities.PatientEntity", b =>
@@ -170,11 +201,6 @@ namespace Hospital.DAL.Migrations
             modelBuilder.Entity("Hospital.Abstraction.Entities.AreaEntity", b =>
                 {
                     b.Navigation("Patients");
-                });
-
-            modelBuilder.Entity("Hospital.Abstraction.Entities.SpecializationEntity", b =>
-                {
-                    b.Navigation("Doctors");
                 });
 #pragma warning restore 612, 618
         }

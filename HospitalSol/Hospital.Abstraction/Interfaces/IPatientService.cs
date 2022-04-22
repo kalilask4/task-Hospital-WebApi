@@ -1,7 +1,7 @@
 using Hospital.Common.Models;
 using Hospital.Common.Models.Patient;
 
-namespace Hospital.Abstraction.ServicesInterfaces;
+namespace Hospital.Abstraction.Interfaces;
 
 public interface IPatientService
 { 
@@ -41,7 +41,7 @@ public interface IPatientService
         Task<BaseCollectionModel<PatientModel>> GetAsync(GetListModel<PatientFilterModel> getListModel);
         */
         /// <summary>
-        /// Удаление события
+        /// Удаление пациента
         /// </summary>
         /// <param name="patientId">Идентификатор пациента</param>
         /// <returns></returns>

@@ -1,6 +1,5 @@
 using FluentValidation;
-using Hospital.Abstraction.RepositoriesInterfaces;
-using Hospital.Abstraction.ServicesInterfaces;
+using Hospital.Abstraction.Interfaces;
 using Hospital.Common.Models;
 using Hospital.Common.Models.Patient;
 

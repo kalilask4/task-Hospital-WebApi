@@ -5,7 +5,7 @@ public class SpecializationEntity: BaseEntity
     /// <summary>
     /// Название специализации врача
     /// </summary>
-    public string? Tittle { get; set; }
+    public string? Title { get; set; }
     
     /// <summary>
     /// Врачи данной специализации

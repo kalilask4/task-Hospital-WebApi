@@ -16,6 +16,11 @@ public class PatientEntity : BaseEntity
     /// Отчество пациента
     /// </summary>
     public string? Surname { get; set; }
+    
+    /// <summary>
+    /// Полное ФИО пациента
+    /// </summary>
+    public string? FullName { get; set; }
 
     /// <summary>
     /// Адрес пациента
@@ -28,9 +33,9 @@ public class PatientEntity : BaseEntity
     public DateTime? Birthdate { get; set; }
 
     /// <summary>
-    /// Адрес пациента
+    /// Пол пациента
     /// </summary>
-    public string? Gender { get; set; }
+    public Gender PatientGender { get; set; }
 
     /// <summary>
     /// Участок пациента
@@ -38,4 +43,11 @@ public class PatientEntity : BaseEntity
     public long? AreaId { get; set; }
 
     public AreaEntity? Area { get; set; }
+    
+ 
+    public enum Gender 
+    {
+        Man = 1,
+        Woman = 2,
+    }
 }
