@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
         <PackageReference Include="Mapster" Version="7.4.0-pre02" />
         <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0-preview.3.22175.1">
@@ -19,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Hospital.API.Contracts\Hospital.API.Contracts.csproj" />
+      <ProjectReference Include="..\Hospital.BL\Hospital.BL.csproj" />
       <ProjectReference Include="..\Hospital.Common\Hospital.Common.csproj" />
       <ProjectReference Include="..\Hospital.DAL\Hospital.DAL.csproj" />
     </ItemGroup>

@@ -1,17 +1,15 @@
 namespace Hospital.Common.Models.Doctor;
 
-public class DoctorModel
+/// <summary>
+/// Модель врача для создания
+/// </summary>
+public class CreateDoctorModel
 {
-    /// <summary>
-    /// Идентификатор врача
-    /// </summary>
-    public long Id { get; set; }
-    
     /// <summary>
     /// Фамилия врача
     /// </summary>
-    public string FamilyName { get; set; }
-
+    public string? FamilyName { get; set; }
+    
     /// <summary>
     /// Имя врача
     /// </summary>
@@ -20,7 +18,7 @@ public class DoctorModel
     /// <summary>
     /// Отчество врача
     /// </summary>
-    public string SurName { get; set; }
+    public string Surname { get; set; }
     
     /// <summary>
     /// Полное ФИО врача
@@ -31,8 +29,8 @@ public class DoctorModel
     /// Кабинет врача
     /// </summary>
     public long OfficeId { get; set; }
-    public OfficeModel Office { get; set; }
-    
+    //public OfficeModel Office { get; set; }
+
     /// <summary>
     /// Специализации врача
     /// </summary>
@@ -42,5 +40,6 @@ public class DoctorModel
     /// Участок врача (для участковых врачей)
     /// </summary>
     public long? AreaId { get; set; }
-    public AreaModel Area { get; set; }
+    //public AreaModel Area { get; set; }
+    
 }

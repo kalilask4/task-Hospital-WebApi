@@ -19,9 +19,13 @@ public class PatientRepository:IPatientRepository
         _context = context;
 
     }
-    public Task<long> CreateAsync(CreatePatientModel createPatientModel)
+    public async Task<long> CreateAsync(CreatePatientModel createPatientModel)
     {
-        throw new NotImplementedException();
+        var patientEntity = _mapper.Map<PatientEntity>(createPatientModel);
+            await _context.AddAsync(patientEntity);
+            await _context.SaveChangesAsync();
+
+            return patientEntity.Id;
     }
 
     /// <inheritdoc cref="IPatientRepository.GetAsync(long)"/>

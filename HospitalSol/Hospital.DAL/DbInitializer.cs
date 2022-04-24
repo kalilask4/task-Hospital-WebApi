@@ -14,8 +14,15 @@ public class DbInitializer
             {
                 var patient = new PatientEntity
                 {
+                    FamilyName = "Kot",
                     Name = "First Patient",
-                    Area = new AreaEntity()
+                    Address = "ul Novaja 2",
+                    Birthdate = DateTime.Today,
+                    Area = new AreaEntity
+                    {
+                        Number = "1e"
+                    },
+                    PatientGender = PatientEntity.Gender.Woman
                 };
                 context.Add(patient);
                 var patient2 = new PatientEntity
@@ -51,7 +58,7 @@ public class DbInitializer
                     FullName = "Second Doctor",
                     Office = new OfficeEntity(),
                     Specializations = new List<SpecializationEntity>(),
-                    AreaId = 1
+                    Area = new AreaEntity()
                 };
                 doctor2.Specializations.Add(new SpecializationEntity());
                 doctor2.Specializations.Add(new SpecializationEntity());

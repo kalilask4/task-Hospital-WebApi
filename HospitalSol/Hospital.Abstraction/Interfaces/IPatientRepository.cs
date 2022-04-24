@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using Hospital.Abstraction.Entities;
 using Hospital.Common.Models;
 using Hospital.Common.Models.Collection;
+using Hospital.Common.Models.Doctor;
 using Hospital.Common.Models.Patient;
 
 namespace Hospital.Abstraction.Interfaces;
@@ -11,9 +12,16 @@ public interface IPatientRepository
     /// <summary>
     /// Создание пациента
     /// </summary>
-    /// <param name="createPatientModel">Модель создаваемого события</param>
+    /// <param name="createPatientModel">Модель создаваемого пациента</param>
     /// <returns></returns>
     Task<long> CreateAsync(CreatePatientModel createPatientModel);
+    
+    // /// <summary>
+    // /// Редактирование пациента
+    // /// </summary>
+    // /// <param name="updatePatientModel"></param>
+    // /// <returns></returns>
+    // Task UpdateAsync(UpdatePatientModel updatePatientModel);
 
     /// <summary>
     /// Получение информации о пациенте по идентификатору
@@ -36,14 +44,6 @@ public interface IPatientRepository
     /// <param name="expression"></param>
     /// <returns></returns>
     Task<PatientModel[]> GetByExpression(Expression<Func<PatientEntity, bool>> expression);
-
-    /*
-    /// <summary>
-    /// Обновление события
-    /// </summary>
-    /// <param name="updatePatientModels">Событие</param>
-    /// <returns></returns>
-    Task UpdateAsync(UpdatePatientModel updatePatientModel);*/
 
     /// <summary>
     /// Удаление пациента

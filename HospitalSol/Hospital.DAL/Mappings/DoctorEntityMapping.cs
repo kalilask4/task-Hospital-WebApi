@@ -12,5 +12,13 @@ public class DoctorEntityMapping: IRegister
             .IgnoreNullValues(true)
             .Map(x=>x.Specializations, s=>new List<SpecializationModel>())
             .MaxDepth(3);
+        
+        config
+            .ForType<CreateDoctorModel, DoctorEntity>()
+            .IgnoreNullValues(true)
+            .Map(x => x.Name, s => s.Name)
+            .Map(x=>x.Specializations, s=>new List<SpecializationModel>())
+            .MaxDepth(3);
+
     }
 }

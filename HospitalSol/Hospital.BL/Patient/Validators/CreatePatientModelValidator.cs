@@ -10,7 +10,12 @@ public class CreatePatientModelValidator: AbstractValidator<CreatePatientModel>
         {
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .MinimumLength(5)
+                .MinimumLength(2)
+                .MaximumLength(100);
+            
+            RuleFor(x => x.FamilyName)
+                .NotEmpty()
+                .MinimumLength(2)
                 .MaximumLength(100);
 
             RuleFor(x => x.AreaId)

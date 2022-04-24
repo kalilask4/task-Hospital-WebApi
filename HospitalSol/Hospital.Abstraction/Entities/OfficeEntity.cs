@@ -7,10 +7,9 @@ public class OfficeEntity: BaseEntity
     /// </summary>
     public string? Number { get; set; }
     
-    /// <summary>
-    /// Доктор относящийся к данному кабинету
-    /// </summary>
-    public long? OfficeId { get; set; }
-
-    public AreaEntity? Office { get; set; }
+    // /// <summary>
+    // ///  Врач относящийся к данному кабинету
+    // /// </summary>
+    // public long? DoctorId { get; set; }
+    // public DoctorEntity? Doctor { get; set; }
 }

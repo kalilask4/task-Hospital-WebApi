@@ -58,7 +58,7 @@ public class PatientController : ControllerBase, IPatientApi
     /// <param name="id"></param>
     /// <returns></returns>
     [HttpGet("{id:long}")]
-   // [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PatientModel))]
+   [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PatientModel))]
     public async Task<PatientModel> Get([FromRoute] long id)
     {
         return await _patientService.GetAsync(id);

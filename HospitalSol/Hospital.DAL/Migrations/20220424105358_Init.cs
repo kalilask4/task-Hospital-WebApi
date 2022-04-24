@@ -56,7 +56,7 @@ namespace Hospital.DAL.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FamilyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FamilyName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -85,8 +85,8 @@ namespace Hospital.DAL.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OfficeId = table.Column<long>(type: "bigint", nullable: true),
-                    AreaId = table.Column<long>(type: "bigint", nullable: true)
+                    AreaId = table.Column<long>(type: "bigint", nullable: true),
+                    OfficeId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {

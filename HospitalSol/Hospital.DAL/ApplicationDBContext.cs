@@ -11,7 +11,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<OfficeEntity> Offices { get; set; }
     public DbSet<SpecializationEntity> Specializations { get; set; }
 
-
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }

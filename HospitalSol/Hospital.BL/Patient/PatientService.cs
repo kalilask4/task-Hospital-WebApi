@@ -1,5 +1,6 @@
 using FluentValidation;
 using Hospital.Abstraction.Interfaces;
+using Hospital.BL.Patient.Validators;
 using Hospital.Common.Models;
 using Hospital.Common.Models.Patient;
 

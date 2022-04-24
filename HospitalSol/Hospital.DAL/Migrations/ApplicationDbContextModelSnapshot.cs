@@ -122,7 +122,9 @@ namespace Hospital.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FamilyName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
@@ -140,7 +142,7 @@ namespace Hospital.DAL.Migrations
 
                     b.HasIndex("AreaId");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("Hospital.Abstraction.Entities.SpecializationEntity", b =>

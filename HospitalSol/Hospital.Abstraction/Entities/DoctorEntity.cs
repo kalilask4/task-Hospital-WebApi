@@ -20,13 +20,7 @@ public class DoctorEntity: BaseEntity
     /// <summary>
     /// Полное ФИО врача
     /// </summary>
-    public string? FullName { get; set; }
-    
-    /// <summary>
-    /// Кабинет врача
-    /// </summary>
-    public long? OfficeId { get; set; }
-    public OfficeEntity? Office { get; set; }
+    public string FullName { get; set; }
     
     /// <summary>
     /// Специализации врача
@@ -38,4 +32,10 @@ public class DoctorEntity: BaseEntity
     /// </summary>
     public long? AreaId { get; set; }
     public AreaEntity? Area { get; set; }
+    
+    /// <summary>
+    /// Кабинет врача
+    /// </summary>
+    public long? OfficeId { get; set; }
+    public OfficeEntity? Office { get; set; }
 }
