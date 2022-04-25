@@ -12,15 +12,4 @@ public class AreaModel
     /// Номер участка
     /// </summary>
     public string Number { get; set; }
-    
-    // /// <summary>
-    // /// Пациенты участка
-    // /// </summary>
-    // public List<PatientModel> Patients { get; set; } = new();
-    //
-    // /// <summary>
-    // /// Врач участка
-    // /// </summary>
-    // public long DoctorId { get; set; }
-    // public DoctorModel Doctor { get; set; }
 }

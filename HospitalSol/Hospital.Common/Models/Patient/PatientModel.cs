@@ -12,12 +12,9 @@ public class PatientModel
     public string Address { get; set; }
     public DateTime Birthdate { get; set; }
 
-    public int Gender { get; set; }
+    public CreatePatientModel.Gender PatientGender { get; set; }
 
-    // {
-    //     Man = 1,
-    //     Woman = 2,
-    // }
     public long AreaId { get; set; }
     public AreaModel Area { get; set; }
+    
 }

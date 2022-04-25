@@ -1,6 +1,6 @@
-namespace Hospital.Common.Models.Doctor;
+namespace Hospital.Common.Models.Patient;
 
-public class DoctorFilterModel
+public class PatientFilterModel
 {
     public long[] Ids { get; set; }
     
@@ -10,9 +10,11 @@ public class DoctorFilterModel
 
     public string? SurName { get; set; }
     
-    public string Office { get; set; }
+    public string? Address { get; set; }
     
-    public SpecializationModel[] Specializations { get; set; } = Array.Empty<SpecializationModel>();
+    public DateTime Birthdate { get; set; }
+
+    public string? PatientGender { get; set; }
     
     public string? Area { get; set; }
 }

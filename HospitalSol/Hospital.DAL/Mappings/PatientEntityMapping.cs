@@ -11,14 +11,13 @@ public class PatientEntityMapping: IRegister
     {
         config.ForType<CreatePatientModel, PatientEntity>()
             .IgnoreNullValues(true);
-            // .Map(x => x.Start, s => s.Start.ToUniversalTime());
-        //     
-        // config.ForType<UpdateEventModel, EventEntity>()
-        //     .IgnoreNullValues(true)
-        //     .Map(x => x.Start, s => s.Start.ToUniversalTime());
-
-        // config.ForType<PatientEntity, PatientModel>()
-        //     .IgnoreNullValues(true);
+            
+        config
+            .ForType<ListPatientModel, PatientModel>()
+            .IgnoreNullValues(true)
+            .Map(x=>x.Area.Number, s=>s.Area)
+            .Map(x=>x.PatientGender, s=>s.PatientGender)
+            .MaxDepth(3);
         
         config.ForType<PatientEntity, PatientModel>()
             .IgnoreNullValues(true)

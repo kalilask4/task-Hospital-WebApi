@@ -9,7 +9,7 @@ public class CreateDoctorModel
     /// Фамилия врача
     /// </summary>
     public string? FamilyName { get; set; }
-    
+
     /// <summary>
     /// Имя врача
     /// </summary>
@@ -19,12 +19,12 @@ public class CreateDoctorModel
     /// Отчество врача
     /// </summary>
     public string Surname { get; set; }
-    
+
     /// <summary>
     /// Полное ФИО врача
     /// </summary>
     public string FullName { get; set; }
-    
+
     /// <summary>
     /// Кабинет врача
     /// </summary>
@@ -35,11 +35,9 @@ public class CreateDoctorModel
     /// Специализации врача
     /// </summary>
     public List<SpecializationModel> Specializations { get; set; } = new();
-    
+
     /// <summary>
     /// Участок врача (для участковых врачей)
     /// </summary>
     public long? AreaId { get; set; }
-    //public AreaModel Area { get; set; }
-    
 }
