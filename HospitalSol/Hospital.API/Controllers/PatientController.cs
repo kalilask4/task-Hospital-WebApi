@@ -22,15 +22,15 @@ public class PatientController : ControllerBase, IPatientApi
     private readonly ILogger<PatientController> _logger;
 
     public PatientController(
-        IPatientService patientService, 
-        IMapper mapper, 
+        IPatientService patientService,
+        IMapper mapper,
         ILogger<PatientController> logger)
     {
         _patientService = patientService;
         _mapper = mapper;
         _logger = logger;
     }
-    
+
     /// <summary>
     /// Создание нового пациента
     /// </summary>
@@ -45,7 +45,7 @@ public class PatientController : ControllerBase, IPatientApi
             Id = await _patientService.CreateAsync(createPatientModel),
         };
     }
-    
+
     /// <summary>
     /// Обновление пациента
     /// </summary>
@@ -61,13 +61,13 @@ public class PatientController : ControllerBase, IPatientApi
     /// </summary>
     /// <param name="patientId"></param>
     /// <returns></returns>
-    [HttpGet("{patientId:long}")] 
+    [HttpGet("{patientId:long}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PatientModel))]
     public async Task<PatientModel> Get([FromRoute] long patientId)
     {
         return await _patientService.GetAsync(patientId);
     }
-    
+
     /// <summary>
     /// Удаление пациента
     /// </summary>

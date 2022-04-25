@@ -19,7 +19,7 @@ public class CreateDoctorModel
     /// Отчество врача
     /// </summary>
     public string Surname { get; set; }
-    
+
 
     /// <summary>
     /// Кабинет врача

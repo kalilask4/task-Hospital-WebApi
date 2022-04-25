@@ -1,12 +1,10 @@
 using FluentValidation;
 using Hospital.Abstraction.Interfaces;
-using Hospital.BL.Patient.Validators;
 using Hospital.Common.Exceptions;
 using Hospital.Common.Models;
 using Hospital.Common.Models.Collection;
 using Hospital.Common.Models.Patient;
 
-//using Hospital.Common.Exceptions;
 
 namespace Hospital.BL.Patient;
 
@@ -36,7 +34,7 @@ public class PatientService : IPatientService
         await _createPatientModelValidator.ValidateAndThrowAsync(createPatientModel);
         return await _patientRepository.CreateAsync(createPatientModel);
     }
-    
+
     /// <inheritdoc cref="IPatientService.GetAsync(long)"/>
     public async Task<PatientModel> GetAsync(long patientId)
     {
@@ -47,7 +45,7 @@ public class PatientService : IPatientService
     {
         var patientModel = await _patientRepository.GetAsync(patientId);
         if (patientModel == null)
-           throw new EntityNotFoundException($"Пациента с идентификатором {patientId} не существует");
+            throw new EntityNotFoundException($"Пациента с идентификатором {patientId} не существует");
         await _patientRepository.DeleteAsync(patientId);
     }
 

@@ -1,8 +1,5 @@
-using System.Linq.Expressions;
-using Hospital.Abstraction.Entities;
 using Hospital.Common.Models;
 using Hospital.Common.Models.Collection;
-using Hospital.Common.Models.Doctor;
 using Hospital.Common.Models.Patient;
 
 namespace Hospital.Abstraction.Interfaces;
@@ -15,7 +12,7 @@ public interface IPatientRepository
     /// <param name="createPatientModel">Модель создаваемого пациента</param>
     /// <returns></returns>
     Task<long> CreateAsync(CreatePatientModel createPatientModel);
-    
+
     /// <summary>
     /// Редактирование пациента
     /// </summary>
@@ -30,7 +27,7 @@ public interface IPatientRepository
     /// <returns></returns>
     Task<PatientModel> GetAsync(long patientId);
 
-    
+
     /// <summary>
     /// Получение информации о пациентах
     /// </summary>
@@ -38,7 +35,7 @@ public interface IPatientRepository
     /// <returns></returns>
     Task<BaseCollectionModel<ListPatientModel>> GetAsync(GetListModel<PatientFilterModel> getListModel);
 
-    
+
     /// <summary>
     /// Удаление пациента
     /// </summary>

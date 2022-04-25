@@ -6,7 +6,7 @@ public class DoctorModel
     /// Идентификатор врача
     /// </summary>
     public long Id { get; set; }
-    
+
     /// <summary>
     /// Фамилия врача
     /// </summary>
@@ -21,21 +21,23 @@ public class DoctorModel
     /// Отчество врача
     /// </summary>
     public string SurName { get; set; }
-    
+
     /// <summary>
     /// Кабинет врача
     /// </summary>
     public long OfficeId { get; set; }
+
     public OfficeModel Office { get; set; }
-    
+
     /// <summary>
     /// Специализации врача
     /// </summary>
     public List<SpecializationModel> Specializations { get; set; } = new();
-    
+
     /// <summary>
     /// Участок врача (для участковых врачей)
     /// </summary>
     public long? AreaId { get; set; }
+
     public AreaModel Area { get; set; }
 }

@@ -44,7 +44,7 @@ public class DoctorController : ControllerBase, IDoctorApi
             Id = await _doctorService.CreateAsync(createDoctorModel)
         };
     }
-    
+
     /// <summary>
     /// Обновление врача
     /// </summary>
@@ -55,7 +55,6 @@ public class DoctorController : ControllerBase, IDoctorApi
         await _doctorService.UpdateAsync(updateDoctorModel);
     }
     
-    
     /// <summary>
     /// Удаление врача
     /// </summary>
@@ -65,7 +64,7 @@ public class DoctorController : ControllerBase, IDoctorApi
     {
         await _doctorService.DeleteAsync(doctorId);
     }
-    
+
     /// <summary>
     /// Получить врача по идентификатору
     /// </summary>
@@ -77,7 +76,7 @@ public class DoctorController : ControllerBase, IDoctorApi
     {
         return await _doctorService.GetAsync(doctorId);
     }
-    
+
     /// <summary>
     /// Получить всех врачей
     /// </summary>

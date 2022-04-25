@@ -1,6 +1,5 @@
 using FluentValidation;
 using Hospital.Abstraction.Interfaces;
-using Hospital.BL.Doctor.Validators;
 using Hospital.Common.Exceptions;
 using Hospital.Common.Models.Collection;
 using Hospital.Common.Models.Doctor;
@@ -13,8 +12,8 @@ public class DoctorService : IDoctorService
     private readonly IValidator<CreateDoctorModel> _createDoctorModelValidator;
     private readonly IValidator<UpdateDoctorModel> _updateDoctorModelValidator;
     private readonly IValidator<GetListModel<DoctorFilterModel>> _getFilterModelValidator;
-    
-    
+
+
     public DoctorService(
         IDoctorRepository doctorRepository,
         IValidator<CreateDoctorModel> createDoctorModelValidator,
@@ -50,7 +49,7 @@ public class DoctorService : IDoctorService
         await _getFilterModelValidator.ValidateAndThrowAsync(getListModel);
         return await _doctorRepository.GetAsync(getListModel);
     }
-    
+
     public async Task DeleteAsync(long doctorId)
     {
         var doctorModel = await _doctorRepository.GetAsync(doctorId);

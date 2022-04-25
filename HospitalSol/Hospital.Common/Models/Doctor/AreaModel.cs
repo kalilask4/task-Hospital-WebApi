@@ -8,6 +8,7 @@ public class AreaModel
     /// Идентификатор участка
     /// </summary>
     public long Id { get; set; }
+
     /// <summary>
     /// Номер участка
     /// </summary>

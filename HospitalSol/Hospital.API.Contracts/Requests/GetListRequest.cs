@@ -3,7 +3,7 @@ using Hospital.Common.Models.Collection;
 
 namespace Hospital.API.Contracts.Requests;
 
-public class GetListRequest<T>: Pagination where T: class
+public class GetListRequest<T> : Pagination where T : class
 {
     public T? Filter { get; set; }
 

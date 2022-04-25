@@ -15,5 +15,4 @@ public class PatientModel
 
     public long AreaId { get; set; }
     public AreaModel Area { get; set; }
-    
 }

@@ -1,13 +1,11 @@
 using Autofac;
 using Hospital.Abstraction.Interfaces;
-using Hospital.API;
 using Hospital.BL.Doctor;
 using Hospital.BL.Patient;
 using Hospital.DAL;
 using Hospital.DAL.Repositories;
 using Mapster;
 using MapsterMapper;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using Autofac.Extensions.DependencyInjection;
 

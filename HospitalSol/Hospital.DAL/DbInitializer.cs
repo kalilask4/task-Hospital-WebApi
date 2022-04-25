@@ -46,8 +46,8 @@ public class DbInitializer
             if (!context.Doctors.Any())
             {
                 var specializations = new List<SpecializationEntity>();
-                specializations.Add(new SpecializationEntity(){Title = "Кардиолог"});
-                specializations.Add(new SpecializationEntity(){Title = "Хирург"});
+                specializations.Add(new SpecializationEntity() { Title = "Кардиолог" });
+                specializations.Add(new SpecializationEntity() { Title = "Хирург" });
                 var doctor = new DoctorEntity
                 {
                     FamilyName = "Goten",
@@ -74,7 +74,7 @@ public class DbInitializer
                         Number = "12d"
                     },
                     Specializations = new List<SpecializationEntity>(),
-                  };
+                };
                 doctor2.Specializations.Add(new SpecializationEntity());
                 doctor2.Specializations.Add(new SpecializationEntity());
                 context.Add(doctor2);

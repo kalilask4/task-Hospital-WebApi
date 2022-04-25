@@ -1,4 +1,3 @@
-using Hospital.Common.Models;
 using Hospital.Common.Models.Doctor;
 using Refit;
 

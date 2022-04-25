@@ -8,20 +8,15 @@ namespace Hospital.API.Contracts.Requests;
 /// </summary>
 public class CreateDoctorRequest
 {
-    [Required]
-    public string FamilyName { get; set; }
-    
-    [Required]
-    public string Name { get; set; }
+    [Required] public string FamilyName { get; set; }
+
+    [Required] public string Name { get; set; }
 
     public string? Surname { get; set; }
-    
-    [Required]
-    public long OfficeId { get; set; }
-    
-    [Required]
-    public List<SpecializationModel> Specializations { get; set; } = new();
+
+    [Required] public long OfficeId { get; set; }
+
+    [Required] public List<SpecializationModel> Specializations { get; set; } = new();
 
     public long? AreaId { get; set; }
-    
 }

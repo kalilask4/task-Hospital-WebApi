@@ -10,8 +10,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hospital.DAL.Repositories;
 
-
-
 public class DoctorRepository : IDoctorRepository
 {
     private readonly IMapper _mapper;
@@ -53,7 +51,6 @@ public class DoctorRepository : IDoctorRepository
         }
 
         return _mapper.Map<DoctorModel>(doctorEntity);
-
     }
 
     public async Task DeleteAsync(long doctorId)
@@ -87,44 +84,44 @@ public class DoctorRepository : IDoctorRepository
         }
 
         var totalCount = await query.LongCountAsync();
-        
+
         if (!string.IsNullOrWhiteSpace(getListModel.SortBy))
+        {
+            query = getListModel.SortBy switch
             {
-                query = getListModel.SortBy switch
-                {
-                    nameof(DoctorEntity.Name) => getListModel.SortOrder == SortOrder.Asc
-                        ? query.OrderBy(x => x.Name)
-                        : query.OrderByDescending(x => x.Name),
+                nameof(DoctorEntity.Name) => getListModel.SortOrder == SortOrder.Asc
+                    ? query.OrderBy(x => x.Name)
+                    : query.OrderByDescending(x => x.Name),
 
-                    nameof(DoctorEntity.FamilyName) => getListModel.SortOrder == SortOrder.Asc
-                        ? query.OrderBy(x => x.FamilyName)
-                        : query.OrderByDescending(x => x.FamilyName),
+                nameof(DoctorEntity.FamilyName) => getListModel.SortOrder == SortOrder.Asc
+                    ? query.OrderBy(x => x.FamilyName)
+                    : query.OrderByDescending(x => x.FamilyName),
 
-                    nameof(DoctorEntity.Office) => getListModel.SortOrder == SortOrder.Asc
-                        ? query.OrderBy(x => x.Office)
-                        : query.OrderByDescending(x => x.Office),
+                nameof(DoctorEntity.Office) => getListModel.SortOrder == SortOrder.Asc
+                    ? query.OrderBy(x => x.Office)
+                    : query.OrderByDescending(x => x.Office),
 
-                    nameof(DoctorEntity.Area) => getListModel.SortOrder == SortOrder.Asc
-                        ? query.OrderBy(x => x.Area)
-                        : query.OrderByDescending(x => x.Area),
+                nameof(DoctorEntity.Area) => getListModel.SortOrder == SortOrder.Asc
+                    ? query.OrderBy(x => x.Area)
+                    : query.OrderByDescending(x => x.Area),
 
-                    _ => getListModel.SortOrder == SortOrder.Asc
-                        ? query.OrderBy(x => x.Id)
-                        : query.OrderByDescending(x => x.Id)
-                };
-            }
-        
+                _ => getListModel.SortOrder == SortOrder.Asc
+                    ? query.OrderBy(x => x.Id)
+                    : query.OrderByDescending(x => x.Id)
+            };
+        }
+
         var doctorModels = await query
-                .Skip((getListModel.Page - 1) * getListModel.PageSize)
-                .Take(getListModel.PageSize)
-                .ProjectToType<ListDoctorModel>(_mapper.Config)
-                .ToListAsync();
+            .Skip((getListModel.Page - 1) * getListModel.PageSize)
+            .Take(getListModel.PageSize)
+            .ProjectToType<ListDoctorModel>(_mapper.Config)
+            .ToListAsync();
         //var listDoctorModels = _mapper.Map<DoctorModel>(doctorModels);
 
         return new BaseCollectionModel<ListDoctorModel>
-            {
-                Items = doctorModels,
-                TotalCount = totalCount
-            };
-        }
+        {
+            Items = doctorModels,
+            TotalCount = totalCount
+        };
     }
+}

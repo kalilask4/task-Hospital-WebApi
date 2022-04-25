@@ -16,7 +16,7 @@ public class CreatePatientModel
     /// Отчество пациента
     /// </summary>
     public string Surname { get; set; }
-  
+
     /// <summary>
     /// Адрес пациента
     /// </summary>
@@ -37,7 +37,7 @@ public class CreatePatientModel
     /// </summary>
     public long AreaId { get; set; }
 
-    public enum Gender 
+    public enum Gender
     {
         Man = 1,
         Woman = 2,

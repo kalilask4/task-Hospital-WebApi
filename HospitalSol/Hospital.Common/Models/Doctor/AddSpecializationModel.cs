@@ -6,5 +6,4 @@ public class SpecializationModel
     /// Название специализации врача
     /// </summary>
     public string Title { get; set; }
-    
 }

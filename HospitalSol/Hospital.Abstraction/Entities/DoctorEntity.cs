@@ -1,6 +1,6 @@
 namespace Hospital.Abstraction.Entities;
 
-public class DoctorEntity: BaseEntity
+public class DoctorEntity : BaseEntity
 {
     /// <summary>
     /// Фамилия врача
@@ -16,21 +16,23 @@ public class DoctorEntity: BaseEntity
     /// Отчество врача
     /// </summary>
     public string? Surname { get; set; }
-    
+
     /// <summary>
     /// Специализации врача
     /// </summary>
     public List<SpecializationEntity> Specializations { get; set; } = new();
-    
+
     /// <summary>
     /// Участок врача (для участковых врачей)
     /// </summary>
     public long? AreaId { get; set; }
+
     public AreaEntity? Area { get; set; }
-    
+
     /// <summary>
     /// Кабинет врача
     /// </summary>
     public long? OfficeId { get; set; }
+
     public OfficeEntity? Office { get; set; }
 }
