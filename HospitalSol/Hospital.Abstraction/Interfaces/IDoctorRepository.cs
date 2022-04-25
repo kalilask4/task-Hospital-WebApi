@@ -1,3 +1,6 @@
+using System.Linq.Expressions;
+using Hospital.Abstraction.Entities;
+using Hospital.Common.Models.Collection;
 using Hospital.Common.Models.Doctor;
 
 namespace Hospital.Abstraction.Interfaces;
@@ -32,6 +35,21 @@ public interface IDoctorRepository
     /// <param name="doctorId">Идентификатор врача</param>
     /// <returns></returns>
     Task DeleteAsync(long doctorId);
+    
+    /// <summary>
+    /// Получение информации о врачах
+    /// </summary>
+    /// <param name="getListModel">Фильтр, пагинация</param>
+    /// <returns></returns>
+    Task<BaseCollectionModel<ListDoctorModel>> GetAsync(GetListModel<DoctorFilterModel> getListModel);
+
+    // /// <summary>
+    // /// As queryable
+    // /// </summary>
+    // /// <param name="expression"></param>
+    // /// <returns></returns>
+    // Task<DoctorModel[]> GetByExpression(Expression<Func<DoctorEntity, bool>> expression);
+
     
     // /// <summary>
     // /// Получение информации о врачах

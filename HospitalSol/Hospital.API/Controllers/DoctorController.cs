@@ -2,6 +2,7 @@ using Hospital.Abstraction.Interfaces;
 using Hospital.API.Abstraction;
 using Hospital.API.Contracts.Requests;
 using Hospital.API.Contracts.Responses;
+using Hospital.Common.Models.Collection;
 using Hospital.Common.Models.Doctor;
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -63,11 +64,6 @@ public class DoctorController : ControllerBase, IDoctorApi
         await _doctorService.DeleteAsync(id);
     }
     
-    
-    
-    
-    
-
     /// <summary>
     /// Получить врача по идентификатору
     /// </summary>
@@ -80,4 +76,16 @@ public class DoctorController : ControllerBase, IDoctorApi
         return await _doctorService.GetAsync(doctorId);
     }
     
+    /// <summary>
+    /// Получить всех врачей
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost("list")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseCollectionResponse<DoctorModel>))]
+    public async Task<IActionResult> GetList([FromBody] GetListRequest<DoctorFilterModel> listRequest)
+    {
+        var getFilterModel = _mapper.Map<GetListModel<DoctorFilterModel>>(listRequest);
+        var collectionModel = await _doctorService.GetAsync(getFilterModel);
+        return Ok(_mapper.Map<BaseCollectionResponse<DoctorModel>>(collectionModel));
+    }
 }

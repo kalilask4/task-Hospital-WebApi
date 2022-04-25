@@ -1,3 +1,4 @@
+using Hospital.Common.Models.Collection;
 using Hospital.Common.Models.Doctor;
 
 namespace Hospital.Abstraction.Interfaces;
@@ -24,6 +25,14 @@ public interface IDoctorService
     /// <param name="doctorId">Идентификатор врача</param>
     /// <returns></returns>
     Task<DoctorModel> GetAsync(long doctorId);
+    
+    /// <summary>
+    /// Получение информации о врачах
+    /// </summary>
+    /// <param name="getListModel">Фильтр, пагинация</param>
+    /// <returns></returns>
+    Task<BaseCollectionModel<ListDoctorModel>> GetAsync(GetListModel<DoctorFilterModel> getListModel);
+
     
     /// <summary>
     /// Удаление врача
