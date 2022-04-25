@@ -33,23 +33,28 @@ public class DoctorService : IDoctorService
         return await _doctorRepository.CreateAsync(createDoctorModel);
     }
 
+    /// <inheritdoc cref="IOctorService.UpdateAsync(UpdateDoctorModel)"/>
     public async Task UpdateAsync(UpdateDoctorModel updateDoctorModel)
     {
         await _updateDoctorModelValidator.ValidateAndThrowAsync(updateDoctorModel);
         await _doctorRepository.UpdateAsync(updateDoctorModel);
     }
 
+    /// <inheritdoc cref="IOctorService.GetAsync(long)"/>
+
     public async Task<DoctorModel> GetAsync(long doctorId)
     {
         return await _doctorRepository.GetAsync(doctorId);
     }
 
+    /// <inheritdoc cref="IOctorService.GetAsync(GetListModel{T})"/>
     public async Task<BaseCollectionModel<ListDoctorModel>> GetAsync(GetListModel<DoctorFilterModel> getListModel)
     {
         await _getFilterModelValidator.ValidateAndThrowAsync(getListModel);
         return await _doctorRepository.GetAsync(getListModel);
     }
 
+    /// <inheritdoc cref="IOctorService.DeleteAsync(long)"/>
     public async Task DeleteAsync(long doctorId)
     {
         var doctorModel = await _doctorRepository.GetAsync(doctorId);

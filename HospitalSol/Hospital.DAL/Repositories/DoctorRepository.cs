@@ -21,6 +21,7 @@ public class DoctorRepository : IDoctorRepository
         _context = context;
     }
 
+    /// <inheritdoc cref="IDoctorRepository.CreateAsync(CreateDoctorModel)"/>
     public async Task<long> CreateAsync(CreateDoctorModel createDoctorModel)
     {
         var doctorEntity = _mapper.Map<DoctorEntity>(createDoctorModel);
@@ -30,6 +31,7 @@ public class DoctorRepository : IDoctorRepository
         return doctorEntity.Id;
     }
 
+    /// <inheritdoc cref="IDoctorRepository.UpdateAsync(UpdateDoctorModel)"/>
     public async Task UpdateAsync(UpdateDoctorModel updateDoctorModel)
     {
         var doctorForUpdate = _mapper.Map<DoctorEntity>(updateDoctorModel);
@@ -37,6 +39,7 @@ public class DoctorRepository : IDoctorRepository
         await _context.SaveChangesAsync();
     }
 
+    /// <inheritdoc cref="IDoctorRepository.GetAsync(long)"/>
     public async Task<DoctorModel> GetAsync(long doctorId)
     {
         var doctorEntity = await _context.Doctors
@@ -53,6 +56,7 @@ public class DoctorRepository : IDoctorRepository
         return _mapper.Map<DoctorModel>(doctorEntity);
     }
 
+    /// <inheritdoc cref="IDoctorRepository.DeleteAsync(long)"/>
     public async Task DeleteAsync(long doctorId)
     {
         var doctorEntity = await _context.Doctors

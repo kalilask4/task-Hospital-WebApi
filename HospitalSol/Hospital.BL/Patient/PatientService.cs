@@ -41,6 +41,7 @@ public class PatientService : IPatientService
         return await _patientRepository.GetAsync(patientId);
     }
 
+    /// <inheritdoc cref="IPatientService.DeleteAsync(long)"/>
     public async Task DeleteAsync(long patientId)
     {
         var patientModel = await _patientRepository.GetAsync(patientId);
@@ -49,12 +50,15 @@ public class PatientService : IPatientService
         await _patientRepository.DeleteAsync(patientId);
     }
 
+    /// <inheritdoc cref="IPatientService.UpdateAsync(UpdatePatientModel)"/>
     public async Task UpdateAsync(UpdatePatientModel updatePatientModel)
     {
         await _updatePatientModelValidator.ValidateAndThrowAsync(updatePatientModel);
         await _patientRepository.UpdateAsync(updatePatientModel);
     }
 
+  
+    /// <inheritdoc cref="IPatientService.GetAsync(GetListModel{T})"/>
     public async Task<BaseCollectionModel<ListPatientModel>> GetAsync(GetListModel<PatientFilterModel> getListModel)
     {
         await _getFilterModelValidator.ValidateAndThrowAsync(getListModel);

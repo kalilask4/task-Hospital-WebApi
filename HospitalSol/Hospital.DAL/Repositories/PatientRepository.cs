@@ -21,6 +21,7 @@ public class PatientRepository : IPatientRepository
         _context = context;
     }
 
+    /// <inheritdoc cref="IPatientRepository.CreateAsync(CreatePatientModel)"/>
     public async Task<long> CreateAsync(CreatePatientModel createPatientModel)
     {
         var patientEntity = _mapper.Map<PatientEntity>(createPatientModel);
@@ -104,6 +105,7 @@ public class PatientRepository : IPatientRepository
         };
     }
 
+    /// <inheritdoc cref="IPatientRepository.DeleteAsync(long)"/>
     public async Task DeleteAsync(long patientId)
     {
         var patientEntity = await _context.Patients
