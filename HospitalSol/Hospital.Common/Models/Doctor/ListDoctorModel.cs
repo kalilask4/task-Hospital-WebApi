@@ -23,11 +23,6 @@ public class ListDoctorModel
     public string SurName { get; set; }
     
     /// <summary>
-    /// Полное ФИО врача
-    /// </summary>
-    public string FullName { get; set; }
-    
-    /// <summary>
     /// Кабинет врача
     /// </summary>
     public string Office { get; set; }

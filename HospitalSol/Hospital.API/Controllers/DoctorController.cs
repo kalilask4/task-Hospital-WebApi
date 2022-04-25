@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hospital.API.Controllers;
 
 /// <summary>
-/// Врачи
+/// Врач
 /// </summary>
 [ApiController]
 [Route("[controller]")]
@@ -39,10 +39,9 @@ public class DoctorController : ControllerBase, IDoctorApi
     public async Task<BaseCreateResponse> Create(CreateDoctorRequest createDoctorRequest)
     {
         var createDoctorModel = _mapper.Map<CreateDoctorModel>(createDoctorRequest);
-        var doctorId = await _doctorService.CreateAsync(createDoctorModel);
         return new BaseCreateResponse
         {
-            Id = doctorId
+            Id = await _doctorService.CreateAsync(createDoctorModel)
         };
     }
     
@@ -55,18 +54,7 @@ public class DoctorController : ControllerBase, IDoctorApi
         var updateDoctorModel = _mapper.Map<UpdateDoctorModel>(doctorRequest);
         await _doctorService.UpdateAsync(updateDoctorModel);
     }
-
-    /// <summary>
-    /// Обновление врача по идентификатору
-    /// </summary>
-    /// <param name="doctorId"></param>
-    [HttpPut( "/{doctorId}")]
-    public async Task Update(CreateDoctorRequest doctorRequest, long doctorId)
-    {
-        var updateDoctorModel = _mapper.Map<UpdateDoctorModel>(doctorRequest);
-        updateDoctorModel.Id = doctorId;
-        await _doctorService.UpdateAsync(updateDoctorModel);
-    }
+    
     
     /// <summary>
     /// Удаление врача

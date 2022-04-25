@@ -10,7 +10,7 @@ public interface IDoctorRepository
     /// <summary>
     /// Создание врача
     /// </summary>
-    /// <param name="createDoctorModel">Модель создаваемого события</param>
+    /// <param name="createDoctorModel">Модель создаваемого врача</param>
     /// <returns></returns>
     Task<long> CreateAsync(CreateDoctorModel createDoctorModel);
     

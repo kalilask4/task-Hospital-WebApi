@@ -26,7 +26,6 @@ public class DoctorRepository : IDoctorRepository
     public async Task<long> CreateAsync(CreateDoctorModel createDoctorModel)
     {
         var doctorEntity = _mapper.Map<DoctorEntity>(createDoctorModel);
-        doctorEntity.FullName = doctorEntity.FamilyName + " " + doctorEntity.Name + " " + doctorEntity.Surname;
         await _context.AddAsync(doctorEntity);
         await _context.SaveChangesAsync();
 
@@ -36,9 +35,6 @@ public class DoctorRepository : IDoctorRepository
     public async Task UpdateAsync(UpdateDoctorModel updateDoctorModel)
     {
         var doctorForUpdate = _mapper.Map<DoctorEntity>(updateDoctorModel);
-        doctorForUpdate.FullName =
-            doctorForUpdate.FamilyName + " " + doctorForUpdate.Name + " " + doctorForUpdate.Surname;
-
         _context.Doctors.Update(doctorForUpdate);
         await _context.SaveChangesAsync();
     }
@@ -132,12 +128,3 @@ public class DoctorRepository : IDoctorRepository
             };
         }
     }
-
-
-//
-//     public Task<DoctorModel[]> GetByExpression(Expression<Func<DoctorEntity, bool>> expression)
-//         {
-//             throw new NotImplementedException();
-//         }
-//     }
-// }

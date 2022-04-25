@@ -18,11 +18,6 @@ public class DoctorEntity: BaseEntity
     public string? Surname { get; set; }
     
     /// <summary>
-    /// Полное ФИО врача
-    /// </summary>
-    public string FullName { get; set; }
-    
-    /// <summary>
     /// Специализации врача
     /// </summary>
     public List<SpecializationEntity> Specializations { get; set; } = new();

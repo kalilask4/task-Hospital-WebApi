@@ -56,7 +56,7 @@ public class DoctorService : IDoctorService
         var doctorModel = await _doctorRepository.GetAsync(doctorId);
 
         if (doctorModel == null)
-            throw new EntityNotFoundException($"События с идентификатором {doctorId} не существует");
+            throw new EntityNotFoundException($"Врача с идентификатором {doctorId} не существует");
 
         await _doctorRepository.DeleteAsync(doctorId);
     }

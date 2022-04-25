@@ -65,10 +65,9 @@ namespace Hospital.DAL.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("FamilyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -85,7 +84,7 @@ namespace Hospital.DAL.Migrations
 
                     b.HasIndex("OfficeId");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("Hospital.Abstraction.Entities.OfficeEntity", b =>
@@ -125,9 +124,6 @@ namespace Hospital.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

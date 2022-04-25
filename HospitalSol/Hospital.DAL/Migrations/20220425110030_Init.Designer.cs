@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hospital.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220424105358_Init")]
+    [Migration("20220425110030_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -68,10 +68,9 @@ namespace Hospital.DAL.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("FamilyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -88,7 +87,7 @@ namespace Hospital.DAL.Migrations
 
                     b.HasIndex("OfficeId");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("Hospital.Abstraction.Entities.OfficeEntity", b =>
@@ -128,9 +127,6 @@ namespace Hospital.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

@@ -16,12 +16,12 @@ public interface IPatientRepository
     /// <returns></returns>
     Task<long> CreateAsync(CreatePatientModel createPatientModel);
     
-    // /// <summary>
-    // /// Редактирование пациента
-    // /// </summary>
-    // /// <param name="updatePatientModel"></param>
-    // /// <returns></returns>
-    // Task UpdateAsync(UpdatePatientModel updatePatientModel);
+    /// <summary>
+    /// Редактирование пациента
+    /// </summary>
+    /// <param name="updatePatientModel"></param>
+    /// <returns></returns>
+    Task UpdateAsync(UpdatePatientModel updatePatientModel);
 
     /// <summary>
     /// Получение информации о пациенте по идентификатору
@@ -30,21 +30,15 @@ public interface IPatientRepository
     /// <returns></returns>
     Task<PatientModel> GetAsync(long patientId);
 
-    /*
+    
     /// <summary>
     /// Получение информации о пациентах
     /// </summary>
     /// <param name="getListModel">Фильтр, пагинация</param>
     /// <returns></returns>
-    Task<BaseCollectionModel<PatientModel>> GetAsync(GetListModel<PatientFilterModel> getListModel);*/
+    Task<BaseCollectionModel<ListPatientModel>> GetAsync(GetListModel<PatientFilterModel> getListModel);
 
-    /// <summary>
-    /// As queryable
-    /// </summary>
-    /// <param name="expression"></param>
-    /// <returns></returns>
-    Task<PatientModel[]> GetByExpression(Expression<Func<PatientEntity, bool>> expression);
-
+    
     /// <summary>
     /// Удаление пациента
     /// </summary>

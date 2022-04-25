@@ -18,12 +18,10 @@ public class CreateDoctorRequest
     
     [Required]
     public long OfficeId { get; set; }
-    //public OfficeModel Office { get; set; }
     
     [Required]
     public List<SpecializationModel> Specializations { get; set; } = new();
 
     public long? AreaId { get; set; }
-    //public AreaModel? Area { get; set; }
-
+    
 }

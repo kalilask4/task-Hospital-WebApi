@@ -17,10 +17,6 @@ public class PatientEntity : BaseEntity
     /// </summary>
     public string? Surname { get; set; }
     
-    /// <summary>
-    /// Полное ФИО пациента
-    /// </summary>
-    public string? FullName { get; set; }
 
     /// <summary>
     /// Адрес пациента

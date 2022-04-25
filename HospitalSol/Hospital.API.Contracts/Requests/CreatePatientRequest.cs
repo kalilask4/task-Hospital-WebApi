@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Hospital.Common.Models;
 
 namespace Hospital.API.Contracts.Requests;
 
@@ -22,14 +23,9 @@ public class CreatePatientRequest
     public DateTime Birthdate { get; set; }
 
     [Required]
-    public Gender PatientGender { get; set; }
+    public CreatePatientModel.Gender PatientGender { get; set; }
     
     [Required]
     public long AreaId { get; set; }
     
-    public enum Gender 
-    {
-        Man = 1,
-        Woman = 2,
-    }
 }

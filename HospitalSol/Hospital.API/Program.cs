@@ -25,11 +25,10 @@ builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(
-        "name=ConnectionStrings:SqlServerConnectionString", 
+        "name=ConnectionStrings:SqlServerConnectionString",
         optionsBuilder => optionsBuilder.MigrationsAssembly("Hospital.DAL"));
     options.EnableSensitiveDataLogging();
     options.LogTo(Console.WriteLine);
-    
 });
 
 builder.Services.AddControllers();
@@ -48,7 +47,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 using (var serviceScope = app.Services.CreateScope())
 {
     var services = serviceScope.ServiceProvider;
@@ -64,8 +62,8 @@ using (var serviceScope = app.Services.CreateScope())
         logger.LogError(e, "Error migration");
         //Console.WriteLine(e);
     }
-
 }
+
 app.UseRouting();
 app.UseDefaultFiles();
 app.UseStaticFiles();

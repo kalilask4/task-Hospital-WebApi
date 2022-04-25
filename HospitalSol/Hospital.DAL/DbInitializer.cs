@@ -16,6 +16,7 @@ public class DbInitializer
                 {
                     FamilyName = "Kot",
                     Name = "First Patient",
+                    Surname = "Pt",
                     Address = "ul Novaja 2",
                     Birthdate = DateTime.Today,
                     Area = new AreaEntity
@@ -30,7 +31,6 @@ public class DbInitializer
                     FamilyName = "Kotova",
                     Name = "Mary",
                     Surname = "St",
-                    FullName = "Kotova Mary St",
                     Address = "ul Novaja",
                     Birthdate = DateTime.Today,
                     Area = new AreaEntity
@@ -45,21 +45,36 @@ public class DbInitializer
 
             if (!context.Doctors.Any())
             {
+                var specializations = new List<SpecializationEntity>();
+                specializations.Add(new SpecializationEntity(){Title = "Кардиолог"});
+                specializations.Add(new SpecializationEntity(){Title = "Хирург"});
                 var doctor = new DoctorEntity
                 {
-                    FullName = "First Doctor",
-                    Office = new OfficeEntity(),
-                    Specializations = new List<SpecializationEntity>(),
+                    FamilyName = "Goten",
+                    Name = "Moon",
+                    Surname = "St",
+                    Office = new OfficeEntity()
+                    {
+                        Number = "12a"
+                    },
+                    Specializations = specializations,
                     Area = new AreaEntity()
+                    {
+                        Number = "1124-t1"
+                    }
                 };
                 context.Add(doctor);
                 var doctor2 = new DoctorEntity
                 {
-                    FullName = "Second Doctor",
-                    Office = new OfficeEntity(),
+                    FamilyName = "Kotova",
+                    Name = "Mary",
+                    Surname = "St",
+                    Office = new OfficeEntity()
+                    {
+                        Number = "12d"
+                    },
                     Specializations = new List<SpecializationEntity>(),
-                    Area = new AreaEntity()
-                };
+                  };
                 doctor2.Specializations.Add(new SpecializationEntity());
                 doctor2.Specializations.Add(new SpecializationEntity());
                 context.Add(doctor2);

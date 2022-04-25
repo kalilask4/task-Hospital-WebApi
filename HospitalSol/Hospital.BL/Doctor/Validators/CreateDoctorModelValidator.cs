@@ -30,7 +30,6 @@ public class CreateDoctorModelValidator: AbstractValidator<CreateDoctorModel>
             .NotEmpty()
             .GreaterThan(0)
             .WithMessage("Идентификатор кабинета должен быть больше 0");
-            
     }
     
 }
