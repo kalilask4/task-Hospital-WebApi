@@ -123,7 +123,7 @@ public class DoctorRepository : IDoctorRepository
                 .Take(getListModel.PageSize)
                 .ProjectToType<ListDoctorModel>(_mapper.Config)
                 .ToListAsync();
-        
+        //var listDoctorModels = _mapper.Map<DoctorModel>(doctorModels);
 
         return new BaseCollectionModel<ListDoctorModel>
             {

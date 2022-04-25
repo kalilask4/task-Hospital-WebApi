@@ -27,8 +27,7 @@ public interface IDoctorRepository
     /// <param name="doctorId">Идентификатор врача</param>
     /// <returns></returns>
     Task<DoctorModel> GetAsync(long doctorId);
-    
-    
+
     /// <summary>
     /// Удаление врача
     /// </summary>
@@ -42,20 +41,5 @@ public interface IDoctorRepository
     /// <param name="getListModel">Фильтр, пагинация</param>
     /// <returns></returns>
     Task<BaseCollectionModel<ListDoctorModel>> GetAsync(GetListModel<DoctorFilterModel> getListModel);
-
-    // /// <summary>
-    // /// As queryable
-    // /// </summary>
-    // /// <param name="expression"></param>
-    // /// <returns></returns>
-    // Task<DoctorModel[]> GetByExpression(Expression<Func<DoctorEntity, bool>> expression);
-
-    
-    // /// <summary>
-    // /// Получение информации о врачах
-    // /// </summary>
-    // /// <param name="getListModel">Фильтр, пагинация</param>
-    // /// <returns></returns>
-    // Task<BaseCollectionModel<DoctorModel>> GetAsync(GetListModel<DoctorFilterModel> getListModel);
 
 }

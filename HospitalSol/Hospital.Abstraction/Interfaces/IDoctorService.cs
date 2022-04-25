@@ -32,7 +32,6 @@ public interface IDoctorService
     /// <param name="getListModel">Фильтр, пагинация</param>
     /// <returns></returns>
     Task<BaseCollectionModel<ListDoctorModel>> GetAsync(GetListModel<DoctorFilterModel> getListModel);
-
     
     /// <summary>
     /// Удаление врача

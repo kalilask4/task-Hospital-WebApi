@@ -11,4 +11,9 @@ public class AreaEntity:BaseEntity
     /// Пациенты участка
     /// </summary>
     public List<PatientEntity> Patients { get; set; } = new();
+    
+    public override string ToString()
+    {
+        return this.Number;
+    }
 }

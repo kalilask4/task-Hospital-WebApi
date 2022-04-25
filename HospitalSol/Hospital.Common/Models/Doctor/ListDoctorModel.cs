@@ -30,8 +30,7 @@ public class ListDoctorModel
     /// <summary>
     /// Кабинет врача
     /// </summary>
-    //public long OfficeId { get; set; }
-    public OfficeModel Office { get; set; }
+    public string Office { get; set; }
     
     /// <summary>
     /// Специализации врача
@@ -41,7 +40,6 @@ public class ListDoctorModel
     /// <summary>
     /// Участок врача (для участковых врачей)
     /// </summary>
-    //public long? AreaId { get; set; }
-    public AreaModel Area { get; set; }
+    public string Area { get; set; }
     
 }

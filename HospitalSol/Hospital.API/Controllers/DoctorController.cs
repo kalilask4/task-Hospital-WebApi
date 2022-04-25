@@ -46,22 +46,36 @@ public class DoctorController : ControllerBase, IDoctorApi
         };
     }
     
+    /// <summary>
+    /// Обновление врача
+    /// </summary>
     [HttpPut]
     public async Task Update(UpdateDoctorRequest doctorRequest)
     {
-        var createDoctorModel = _mapper.Map<UpdateDoctorModel>(doctorRequest);
-        await _doctorService.UpdateAsync(createDoctorModel);
+        var updateDoctorModel = _mapper.Map<UpdateDoctorModel>(doctorRequest);
+        await _doctorService.UpdateAsync(updateDoctorModel);
     }
-    
+
+    /// <summary>
+    /// Обновление врача по идентификатору
+    /// </summary>
+    /// <param name="doctorId"></param>
+    [HttpPut( "/{doctorId}")]
+    public async Task Update(CreateDoctorRequest doctorRequest, long doctorId)
+    {
+        var updateDoctorModel = _mapper.Map<UpdateDoctorModel>(doctorRequest);
+        updateDoctorModel.Id = doctorId;
+        await _doctorService.UpdateAsync(updateDoctorModel);
+    }
     
     /// <summary>
     /// Удаление врача
     /// </summary>
-    /// <param name="id"></param>
-    [HttpDelete("{id:long}")]
-    public async Task Delete([FromRoute] long id)
+    /// <param name="doctorId"></param>
+    [HttpDelete("{doctorId:long}")]
+    public async Task Delete([FromRoute] long doctorId)
     {
-        await _doctorService.DeleteAsync(id);
+        await _doctorService.DeleteAsync(doctorId);
     }
     
     /// <summary>
@@ -70,7 +84,7 @@ public class DoctorController : ControllerBase, IDoctorApi
     /// <param name="doctorId"></param>
     /// <returns></returns>
     [HttpGet("{doctorId:long}")]
-   // [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DoctorModel))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DoctorModel))]
     public async Task<DoctorModel> Get([FromRoute] long doctorId)
     {
         return await _doctorService.GetAsync(doctorId);
@@ -81,11 +95,11 @@ public class DoctorController : ControllerBase, IDoctorApi
     /// </summary>
     /// <returns></returns>
     [HttpPost("list")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseCollectionResponse<DoctorModel>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseCollectionResponse<ListDoctorModel>))]
     public async Task<IActionResult> GetList([FromBody] GetListRequest<DoctorFilterModel> listRequest)
     {
         var getFilterModel = _mapper.Map<GetListModel<DoctorFilterModel>>(listRequest);
         var collectionModel = await _doctorService.GetAsync(getFilterModel);
-        return Ok(_mapper.Map<BaseCollectionResponse<DoctorModel>>(collectionModel));
+        return Ok(_mapper.Map<BaseCollectionResponse<ListDoctorModel>>(collectionModel));
     }
 }
