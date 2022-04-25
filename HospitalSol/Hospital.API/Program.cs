@@ -58,7 +58,6 @@ using (var serviceScope = app.Services.CreateScope())
     catch (Exception e)
     {
         logger.LogError(e, "Error migration");
-        //Console.WriteLine(e);
     }
 }
 

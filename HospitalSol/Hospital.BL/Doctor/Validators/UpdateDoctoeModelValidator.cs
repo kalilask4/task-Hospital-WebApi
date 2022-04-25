@@ -20,7 +20,8 @@ public class UpdateDoctorModelValidator : AbstractValidator<UpdateDoctorModel>
 
         RuleFor(x => x.Surname)
             .MinimumLength(2)
-            .MaximumLength(100);
+            .MaximumLength(100)
+            .When(x => x.Surname != null);
 
         RuleFor(x => x.AreaId)
             .GreaterThan(0)
