@@ -1,5 +1,4 @@
-# Тестовое задание
-Hospital (ASP.NET Web Api .net 6.0)
+# Тестовое задание. Hospital (ASP.NET Web Api .net 6.0)
 
 
 Сделать asp.net web api 2 контроллера для редактирования таблиц пациентов и врачей.
