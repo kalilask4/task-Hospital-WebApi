@@ -16,10 +16,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 var config = new TypeAdapterConfig();
 builder.Services.AddSingleton(config);
 builder.Services.AddSingleton<IMapper, ServiceMapper>();
-builder.Services.AddScoped<IPatientService, PatientService>();
-builder.Services.AddScoped<IPatientRepository, PatientRepository>();
-builder.Services.AddScoped<IDoctorService, DoctorService>();
-builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(
@@ -36,6 +33,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new Hospital.BL.Module()));
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new Hospital.DAL.Module()));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
