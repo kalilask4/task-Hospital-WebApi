@@ -115,4 +115,12 @@ public class PatientRepository : IPatientRepository
         _context.Remove(patientEntity);
         await _context.SaveChangesAsync();
     }
+    
+    /// <inheritdoc cref="IPatientRepository.ExistAsync(string)"/>
+    public async Task<bool> ExistAsync(string fullName)
+    {
+        return await _context.Patients
+            .AsNoTracking()
+            .AnyAsync(x => x.FullName == fullName);
+    }
 }

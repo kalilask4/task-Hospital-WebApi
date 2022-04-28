@@ -17,6 +17,28 @@ public class PatientEntity : BaseEntity
     /// </summary>
     public string? Surname { get; set; }
 
+    /// <summary>
+    /// Полное ФИО пациента
+    /// </summary>
+    private string? fullName;
+    public string? FullName
+    {
+        get
+        {
+            return fullName;
+        }
+        set
+        {
+            if (string.IsNullOrEmpty(Surname))
+            {
+                fullName = FamilyName + " " + Name;
+            }
+            else
+            {
+                fullName = this.FamilyName + " " + this.Name + " " + this.Surname;
+            }
+        }
+    }
 
     /// <summary>
     /// Адрес пациента
