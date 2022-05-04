@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.BL", "Hospital.BL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.API.Contracts", "Hospital.API.Contracts\Hospital.API.Contracts.csproj", "{28C1B900-5568-4C16-A65A-7ACEA0C3F8A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.UnitTests", "Hospital.UnitTests\Hospital.UnitTests.csproj", "{A1CE644A-F4B8-495E-B79B-C25B509DC74A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{28C1B900-5568-4C16-A65A-7ACEA0C3F8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C1B900-5568-4C16-A65A-7ACEA0C3F8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28C1B900-5568-4C16-A65A-7ACEA0C3F8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1CE644A-F4B8-495E-B79B-C25B509DC74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1CE644A-F4B8-495E-B79B-C25B509DC74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1CE644A-F4B8-495E-B79B-C25B509DC74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1CE644A-F4B8-495E-B79B-C25B509DC74A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
