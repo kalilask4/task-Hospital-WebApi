@@ -26,35 +26,35 @@ public class DoctorService : IDoctorService
         _getFilterModelValidator = getFilterModelValidator;
     }
 
-    /// <inheritdoc cref="IOctorService.CreateAsync(CreateDoctorModel)"/>
+    /// <inheritdoc cref="IDctorService.CreateAsync(CreateDoctorModel)"/>
     public async Task<long> CreateAsync(CreateDoctorModel createDoctorModel)
     {
         await _createDoctorModelValidator.ValidateAndThrowAsync(createDoctorModel);
         return await _doctorRepository.CreateAsync(createDoctorModel);
     }
 
-    /// <inheritdoc cref="IOctorService.UpdateAsync(UpdateDoctorModel)"/>
+    /// <inheritdoc cref="IDctorService.UpdateAsync(UpdateDoctorModel)"/>
     public async Task UpdateAsync(UpdateDoctorModel updateDoctorModel)
     {
         await _updateDoctorModelValidator.ValidateAndThrowAsync(updateDoctorModel);
         await _doctorRepository.UpdateAsync(updateDoctorModel);
     }
 
-    /// <inheritdoc cref="IOctorService.GetAsync(long)"/>
+    /// <inheritdoc cref="IDctorService.GetAsync(long)"/>
 
     public async Task<DoctorModel> GetAsync(long doctorId)
     {
         return await _doctorRepository.GetAsync(doctorId);
     }
 
-    /// <inheritdoc cref="IOctorService.GetAsync(GetListModel{T})"/>
+    /// <inheritdoc cref="IDctorService.GetAsync(GetListModel{T})"/>
     public async Task<BaseCollectionModel<ListDoctorModel>> GetAsync(GetListModel<DoctorFilterModel> getListModel)
     {
         await _getFilterModelValidator.ValidateAndThrowAsync(getListModel);
         return await _doctorRepository.GetAsync(getListModel);
     }
 
-    /// <inheritdoc cref="IOctorService.DeleteAsync(long)"/>
+    /// <inheritdoc cref="IDctorService.DeleteAsync(long)"/>
     public async Task DeleteAsync(long doctorId)
     {
         var doctorModel = await _doctorRepository.GetAsync(doctorId);

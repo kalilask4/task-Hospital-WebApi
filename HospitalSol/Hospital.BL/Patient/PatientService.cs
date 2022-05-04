@@ -46,7 +46,7 @@ public class PatientService : IPatientService
     {
         var patientModel = await _patientRepository.GetAsync(patientId);
         if (patientModel == null)
-            throw new EntityNotFoundException($"Пациента с идентификатором {patientId} не существует");
+            throw new EntityNotFoundException($"Пациент с идентификатором {patientId} не найден");
         await _patientRepository.DeleteAsync(patientId);
     }
 

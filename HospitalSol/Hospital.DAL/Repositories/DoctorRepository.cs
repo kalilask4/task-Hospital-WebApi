@@ -50,7 +50,7 @@ public class DoctorRepository : IDoctorRepository
             .SingleOrDefaultAsync((x => x.Id == doctorId));
         if (doctorEntity == null)
         {
-            throw new Exception("Врач с данным идентификатором не найден");
+            throw new Exception($"Врач с идентификатором {doctorId} не найден");
         }
 
         return _mapper.Map<DoctorModel>(doctorEntity);

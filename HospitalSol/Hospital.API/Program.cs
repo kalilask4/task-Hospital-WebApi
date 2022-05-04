@@ -1,13 +1,10 @@
 using Autofac;
-using Hospital.Abstraction.Interfaces;
-using Hospital.BL.Doctor;
-using Hospital.BL.Patient;
 using Hospital.DAL;
-using Hospital.DAL.Repositories;
 using Mapster;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using Autofac.Extensions.DependencyInjection;
+using Hospital.API;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
@@ -16,6 +13,11 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 var config = new TypeAdapterConfig();
 builder.Services.AddSingleton(config);
 builder.Services.AddSingleton<IMapper, ServiceMapper>();
+
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new MainActionFilter());
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
