@@ -18,10 +18,5 @@ public class PatientEntityMapping : IRegister
             .Map(x => x.Area.Number, s => s.Area)
             .Map(x => x.PatientGender, s => s.PatientGender)
             .MaxDepth(3);
-
-        config.ForType<PatientEntity, PatientModel>()
-            .IgnoreNullValues(true)
-            .Map(x => x.Area, s => s.Area)
-            .MaxDepth(3);
     }
 }
