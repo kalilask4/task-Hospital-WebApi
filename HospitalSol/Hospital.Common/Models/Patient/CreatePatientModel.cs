@@ -20,7 +20,13 @@ public class CreatePatientModel
     /// <summary>
     /// ФИО пациента
     /// </summary>
-    public string? FullName { get; set; }
+    public string? FullName {
+        get
+        {
+            return string.Join(" ", FamilyName, Name, Surname);
+        }
+        set { }
+    }
 
     /// <summary>
     /// Адрес пациента

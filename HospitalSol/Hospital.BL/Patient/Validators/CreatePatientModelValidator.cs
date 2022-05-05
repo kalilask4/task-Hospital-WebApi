@@ -28,11 +28,21 @@ public class CreatePatientModelValidator : AbstractValidator<CreatePatientModel>
             .GreaterThan(0)
             .WithMessage("Идентификатор станции должен быть больше 0");
         
-        RuleFor(x => x.FamilyName + " " + x.Name + " " + x.Surname)
+        // RuleFor(x => x.FamilyName + " " + x.Name + " " + x.Surname)
+        //     .NotEmpty()
+        //     .CustomAsync(async (fullName, context, _) =>
+        //     {
+        //         var isSameFullNameExist = await patientRepository.ExistAsync(fullName);
+        //
+        //         if (isSameFullNameExist)
+        //             context.AddFailure("Пациент с такими ФИО уже существует");
+        //     });
+        
+        RuleFor(x => x.FullName)
             .NotEmpty()
             .CustomAsync(async (fullName, context, _) =>
             {
-                var isSameFullNameExist = await patientRepository.ExistAsync(fullName);
+                var isSameFullNameExist = await patientRepository.FullNameExistAsync(fullName);
         
                 if (isSameFullNameExist)
                     context.AddFailure("Пациент с такими ФИО уже существует");

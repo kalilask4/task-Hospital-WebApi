@@ -49,4 +49,11 @@ public interface IPatientRepository
     /// <param name="fullName">ФИО пациента</param>
     /// <returns><c> true </c> если пациент с такими ФИО есть, иначе <c> false </c></returns>
     Task<bool> ExistAsync(string fullName);
+
+    /// <summary>
+    /// Проверка наличия пациента по ФИО
+    /// </summary>
+    /// <param name="fullName">ФИО пациента</param>
+    /// <returns><c> true </c> если пациент с такими ФИО есть, иначе <c> false </c></returns>
+    Task<bool> FullNameExistAsync(string? fullName);
 }

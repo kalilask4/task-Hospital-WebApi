@@ -123,4 +123,27 @@ public class PatientRepository : IPatientRepository
             .AsNoTracking()
             .AnyAsync(x => x.FullName == fullName);
     }
+
+    public async Task<bool> FullNameExistAsync(string? fullName)
+    {
+        string[] fio = fullName.Split(new char[] { ' ' });
+        bool exist = false;
+        if (await _context.Patients
+                .AsNoTracking()
+                .AnyAsync(x => x.FamilyName == fio[1]))
+        {
+            if (await _context.Patients
+                    .AsNoTracking()
+                    .AnyAsync(x => x.Name == fio[0]))
+            {
+                if (await _context.Patients
+                        .AsNoTracking()
+                        .AnyAsync(x => x.Surname == fio[2]))
+                {
+                    exist = true;
+                }
+            }
+        }
+        return exist;
+    }
 }

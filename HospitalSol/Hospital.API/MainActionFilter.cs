@@ -25,6 +25,7 @@ public class MainActionFilter:IActionFilter
 
         switch (context.Exception)
         {
+            // case ValidationException or Common.Exceptions.ValidationException:
             case ValidationException or Common.Exceptions.ValidationException:
 
                 problemDetails = new ProblemDetails
